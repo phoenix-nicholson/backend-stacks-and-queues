@@ -3,19 +3,18 @@ class LinkedListNode {
   //set up info associated with this node
   constructor(data) {
     this.data = data;
-    this.left = null;
-    this.right = null;
+    this.next = null;
   }
   //add node
   add(node) {
     //takes in a node
     // if there is no next, node it takes in becomes next
-    if (!this.left) {
-      this.right = node;
+    if (!this.next) {
+      this.next = node;
     } else {
       //if there is next
       //delegate to the current next
-      this.left.add(node);
+      this.next.add(node);
     }
   }
 }
