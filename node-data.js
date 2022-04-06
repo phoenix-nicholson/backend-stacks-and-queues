@@ -18,12 +18,31 @@ class LinkedListNode {
     }
   }
 }
-const B = new LinkedListNode('B');
-const A = new LinkedListNode('A');
-const C = new LinkedListNode('C');
-const D = new LinkedListNode('D');
+const root = new LinkedListNode('A');
+const nodeB = new LinkedListNode('B');
+root.add(nodeB);
+// console.log(root.getList()); // 'A B'
+const nodeC = new LinkedListNode('C');
+const nodeD = new LinkedListNode('D');
+const nodeE = new LinkedListNode('E');
+root.add(nodeC);
+root.add(nodeD);
+root.add(nodeE);
+// console.log(root.getList()); // 'A B C D E'
 
-// B will be the root of the tree:
-B.add(A);
-B.add(D);
-B.add(C);
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  add(node) {
+    if (node.value === this.value) {
+      if (!this.left) this.left = node;
+    } else {
+      if (!this.right) this.right = node;
+      else this.right.add(node);
+    }
+  }
+}
